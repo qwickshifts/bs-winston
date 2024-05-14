@@ -1,7 +1,7 @@
 type t;
 
 module Console = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     level: option(string),
@@ -34,7 +34,7 @@ module Console = {
 let createConsole = Console.create;
 
 module File = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config('a) = {
     [@mel.optional]
     level: option(string),
@@ -93,7 +93,7 @@ module File = {
 let createFile = File.create;
 
 module Http = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config('a) = {
     [@mel.optional]
     host: option(string),
@@ -115,7 +115,7 @@ module Http = {
 let createHttp = Http.create;
 
 module Stream = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config('a) = {
     [@mel.optional]
     level: option(string),

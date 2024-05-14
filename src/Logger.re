@@ -1,6 +1,6 @@
 type u;
 
-[@deriving abstract]
+[@deriving jsProperties]
 type config = {
   [@mel.optional]
   level: option(string),
@@ -67,7 +67,7 @@ let withMessage = (obj, msg) => {
   content: {
     ...obj.content,
     message:
-      Js.String2.trim(obj.content.message ++ " " ++ Js.String2.make(msg)),
+      Js.String.trim(obj.content.message ++ " " ++ Js.String.make(msg)),
   },
 };
 
@@ -118,7 +118,7 @@ let exnToJson: exn => Js.Json.t =
     | None =>
       switch (Js.Json.stringifyAny(error)) {
       | Some(content) => Js.Json.string(content)
-      | None => Js.Json.string(Js.String2.make(error))
+      | None => Js.Json.string(Js.String.make(error))
       }
     };
 

@@ -13,17 +13,17 @@ help: ## Print this help message
 
 .PHONY: create-switch
 create-switch: ## Create opam switch
-	opam switch create . 5.1.0 -y --deps-only
+	opam switch create . -y --deps-only --no-install --packages=dune,ocamlformat,ocaml-lsp-server,ocaml-base-compiler
 
-.PHONY: gen-opam
-gen-opam: ## When .opam isn't there
+.PHONY: generate-opam
+generate-opam: ## When .opam isn't there
 	$(DUNE) build $(project_name).opam
 
 .PHONY: init
 init: create-switch install ## Configure everything to develop this repository in local
 
 .PHONY: install
-install: ## Install development dependencies
+install: generate-opam ## Install development dependencies
 	npm install # install JavaScript packages that the project might depend on, like `react` or `react-dom`
 	opam update # make sure that opam has the latest information about published libraries in the opam repository https://opam.ocaml.org/packages/
 	opam install -y . --deps-only --with-test # install the Melange and OCaml dependencies

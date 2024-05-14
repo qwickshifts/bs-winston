@@ -24,7 +24,7 @@ external alignExt: unit => t = "align";
 let createAlign = alignExt;
 
 module Cli = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     level: option(bool),
@@ -45,7 +45,7 @@ module Cli = {
 let createCli = Cli.create;
 
 module Colorize = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     level: option(bool),
@@ -64,7 +64,7 @@ module Colorize = {
 let createColorize = Colorize.create;
 
 module Json = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     replacer: option((. string, Js.Json.t) => Js.Json.t),
@@ -79,7 +79,7 @@ module Json = {
 let createJson = Json.create;
 
 module Label = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     label: option(string),
@@ -98,7 +98,7 @@ external logstashExt: unit => t = "logstash";
 let createLogstash = logstashExt;
 
 module Metadata = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     key: option(string),
@@ -125,7 +125,7 @@ let createMetadata = Metadata.create;
 let createMs = msExt;
 
 module PadLevels = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     levels: option(Js.Dict.t(int)),
@@ -137,7 +137,7 @@ module PadLevels = {
 let createPadLevels = PadLevels.create;
 
 module PrettyPrint = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     depth: option(int),
@@ -164,7 +164,7 @@ external splatExt: unit => t = "splat";
 let createSplat = splatExt;
 
 module Timestamp = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     format: option(string),
@@ -179,7 +179,7 @@ module Timestamp = {
 let createTimestamp = Timestamp.create;
 
 module Uncolorize = {
-  [@deriving abstract]
+  [@deriving jsProperties]
   type config = {
     [@mel.optional]
     level: option(bool),
